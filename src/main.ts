@@ -1,12 +1,14 @@
-import { DEFAULT_HANDLERS, Rester } from '@rester/core';
+import { Rester } from '@rester/core';
 import 'reflect-metadata';
-import { AccessModule } from './access';
-import { AphorismModule } from './aphorism';
-import { AccessHandler } from './common/handlers';
+import { QueueModule } from './queue';
+
+// const rester = new Rester({
+//   handlers: [AccessHandler, ...DEFAULT_HANDLERS],
+//   modules: [AccessModule, QueueModule],
+// });
 
 const rester = new Rester({
-  handlers: [AccessHandler, ...DEFAULT_HANDLERS],
-  modules: [AccessModule, AphorismModule],
+  modules: [QueueModule],
 });
 
 rester.bootstrap();

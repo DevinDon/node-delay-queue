@@ -13,7 +13,9 @@
     "docs"
   ],
   "scripts": {
-    "build": "./scripts/build.sh",
+    "build": "npm run build:prod",
+    "build:dev": "MODE=DEV ./scripts/build.sh",
+    "build:prod": "MODE=PROD ./scripts/build.sh",
     "clean": "./scripts/clean.sh",
     "debug": "./scripts/debug.sh",
     "init": "./scripts/init.sh",
@@ -37,6 +39,7 @@
     "@rester/core": "0.15.12",
     "@rester/logger": "0.2.1",
     "@rester/orm": "0.1.9",
+    "@rester/queue": "0.1.2",
     "class-validator": "0.13.1",
     "mongodb": "3.6.6",
     "node-fetch": "2.6.1"

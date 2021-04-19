@@ -38,9 +38,11 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Debug: Current JS File",
+      "name": "Debug: Bundle Dev File",
+      "cwd": "${workspaceFolder}/dist",
       "args": [
-        "${relativeFile}"
+        // "${relativeFile}"
+        "bundle.dev.js"
       ],
       "sourceMaps": true,
       "protocol": "inspector",
