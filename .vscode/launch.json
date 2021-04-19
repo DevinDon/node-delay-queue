@@ -41,8 +41,20 @@
       "name": "Debug: Bundle Dev File",
       "cwd": "${workspaceFolder}/dist",
       "args": [
-        // "${relativeFile}"
-        "bundle.dev.js"
+        "bundle.dev.js",
+      ],
+      "sourceMaps": true,
+      "protocol": "inspector",
+      "outputCapture": "std",
+      "stopOnEntry": false,
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug: Bundle Prod File",
+      "cwd": "${workspaceFolder}/dist",
+      "args": [
+        "bundle.js",
       ],
       "sourceMaps": true,
       "protocol": "inspector",
