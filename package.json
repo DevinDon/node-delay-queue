@@ -36,7 +36,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@rester/core": "0.15.13",
+    "@rester/core": "0.15.17",
     "@rester/logger": "0.2.2",
     "@rester/orm": "0.1.9",
     "@rester/queue": "0.1.2",
