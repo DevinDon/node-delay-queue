@@ -1,6 +1,6 @@
 import { BaseView, ExistResponse, GET, PathQuery, PathVariable, POST, RequestBody, requiredInRange, requiredParam, requiredParamsInFields, View } from '@rester/core';
-import { FullMessage, Message, Queue } from '@rester/queue';
-import { getQueue } from '../common/utils/get-queue';
+import { FullMessage, Message, ResterBroker } from '@rester/queue';
+import { getBroker } from '../common/utils/get-queue';
 
 // create, remove, modify, take, search
 // one, more
@@ -8,10 +8,10 @@ import { getQueue } from '../common/utils/get-queue';
 @View('queue')
 export class QueueView extends BaseView {
 
-  private queue: Queue;
+  private broker: ResterBroker;
 
   async init() {
-    this.queue = getQueue();
+    this.broker = getBroker();
   }
 
   @POST()
@@ -19,7 +19,7 @@ export class QueueView extends BaseView {
     @RequestBody() message: Message,
   ) {
     requiredParamsInFields(message, ['topic', 'body']);
-    const id = await this.queue.produce(message);
+    const id = await this.broker.produce(message);
     return new ExistResponse({
       statusCode: 201,
       data: id ? { id } : undefined,
@@ -32,9 +32,9 @@ export class QueueView extends BaseView {
     @PathQuery('timeout') timeout: number = 300,
   ): Promise<ExistResponse<FullMessage>> {
     requiredParam(topic);
-    requiredInRange(100, timeout, 60 * 1000);
+    requiredInRange(0.1 * 1000, timeout, 60 * 1000);
     return new ExistResponse({
-      data: await this.queue.next({ topic }, timeout),
+      data: await this.broker.next({ topic }, timeout),
       message: `No message got in ${timeout}ms with topic ${topic}`,
     });
   }

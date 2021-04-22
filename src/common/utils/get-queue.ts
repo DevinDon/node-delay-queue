@@ -1,8 +1,8 @@
 import { loadResterConfig } from '@rester/core';
-import { Queue } from '@rester/queue';
+import { ResterBroker } from '@rester/queue';
 
-const instance: { queue?: Queue } = {};
-export const getQueue = () => {
+const instance: { broker?: ResterBroker } = {};
+export const getBroker = () => {
   const { queue: config } = loadResterConfig() as any;
-  return instance.queue = instance.queue || new Queue(config);
+  return instance.broker = instance.broker || new ResterBroker(config);
 };
