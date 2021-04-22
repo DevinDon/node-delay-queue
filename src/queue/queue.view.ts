@@ -1,6 +1,6 @@
 import { BaseView, ExistResponse, GET, PathQuery, PathVariable, POST, RequestBody, requiredInRange, requiredParam, requiredParamsInFields, View } from '@rester/core';
 import { FullMessage, Message, ResterBroker } from '@rester/queue';
-import { getBroker } from '../common/utils/get-queue';
+import { getBroker } from './utils';
 
 // create, remove, modify, take, search
 // one, more
