@@ -39,7 +39,7 @@
     "@rester/core": "0.15.17",
     "@rester/logger": "0.2.2",
     "@rester/orm": "0.1.9",
-    "@rester/queue": "0.2.1",
+    "@rester/queue": "0.2.2",
     "class-validator": "0.13.1",
     "mongodb": "3.6.6",
     "node-fetch": "2.6.1"
